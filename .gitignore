@@ -1,0 +1,23 @@
+# python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# logs & local
+*.log
+.DS_Store
+
+# model weights / large files
+*.pt
+*.onnx
+*.engine
