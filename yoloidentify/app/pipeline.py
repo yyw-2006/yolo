@@ -68,9 +68,9 @@ class AuditPipeline:
 
 def _to_coarse_result(pred: CoarsePrediction) -> CoarseResult:
     return CoarseResult(
-        category_id=pred.category_id,
-        category_name=pred.category_name,
-        score=float(pred.score),
+        category_id=pred.primary_category_id,
+        category_name=pred.primary_category_name,
+        score=float(pred.primary_score),
         topk=[
             TopKItem(category_id=item.category_id, category_name=item.category_name, score=float(item.score))
             for item in (pred.topk or [])
