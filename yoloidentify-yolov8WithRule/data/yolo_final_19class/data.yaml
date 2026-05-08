@@ -1,0 +1,25 @@
+path: E:\yolov8_recog\data\yolo_final_19class
+train: images/train
+val: images/val
+test: images/test
+nc: 19
+names:
+- gun
+- knife
+- blood
+- syringe
+- pill
+- powder
+- swastika
+- nazi_symbol
+- poker_card
+- dice
+- chip
+- roulette
+- slot_machine
+- middle_finger
+- crowd
+- flag
+- banner
+- signboard
+- police
