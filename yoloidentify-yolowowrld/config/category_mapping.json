@@ -1,0 +1,128 @@
+{
+  "normal_category": "normal",
+  "default_threshold": 0.25,
+  "topk": 3,
+  "categories": [
+    {
+      "id": 0,
+      "name": "normal",
+      "display_name": "正常",
+      "chain": "normal",
+      "priority": 100,
+      "decision": "safe",
+      "threshold": 1.0,
+      "prompts": [],
+      "tags": []
+    },
+    {
+      "id": 1,
+      "name": "politics",
+      "display_name": "涉政",
+      "chain": "ocr",
+      "priority": 10,
+      "decision": "review",
+      "threshold": 0.15,
+      "prompts": ["political banner", "political slogan", "government protest", "politician"],
+      "tags": ["political banner", "political slogan", "government protest", "politician"]
+    },
+    {
+      "id": 2,
+      "name": "protest",
+      "display_name": "游行集会",
+      "chain": "ocr",
+      "priority": 20,
+      "decision": "review",
+      "threshold": 0.15,
+      "prompts": ["flag", "crowd", "protest sign", "banner"],
+      "tags": ["flag", "crowd", "protest sign", "banner"]
+    },
+    {
+      "id": 3,
+      "name": "fallen_official",
+      "display_name": "落马官员",
+      "chain": "face",
+      "priority": 30,
+      "decision": "review",
+      "threshold": 0.15,
+      "prompts": ["face", "official"],
+      "tags": ["face", "official"]
+    },
+    {
+      "id": 4,
+      "name": "disgraced_artist",
+      "display_name": "劣迹艺人",
+      "chain": "face",
+      "priority": 40,
+      "decision": "review",
+      "threshold": 0.15,
+      "prompts": ["face", "celebrity"],
+      "tags": ["face", "celebrity"]
+    },
+    {
+      "id": 5,
+      "name": "terrorism",
+      "display_name": "暴恐",
+      "chain": "direct",
+      "priority": 50,
+      "decision": "block",
+      "threshold": 0.10,
+      "prompts": [],
+      "tags": []
+    },
+    {
+      "id": 6,
+      "name": "drugs",
+      "display_name": "违禁毒品",
+      "chain": "direct",
+      "priority": 60,
+      "decision": "block",
+      "threshold": 0.15,
+      "prompts": [],
+      "tags": []
+    },
+    {
+      "id": 7,
+      "name": "illegal_religion",
+      "display_name": "非法宗教",
+      "chain": "direct",
+      "priority": 70,
+      "decision": "block",
+      "threshold": 0.15,
+      "prompts": [],
+      "tags": []
+    },
+    {
+      "id": 8,
+      "name": "gambling",
+      "display_name": "赌博",
+      "chain": "direct",
+      "priority": 80,
+      "decision": "block",
+      "threshold": 0.15,
+      "prompts": [],
+      "tags": []
+    },
+    {
+      "id": 9,
+      "name": "nazi_symbol",
+      "display_name": "纳粹符号",
+      "chain": "direct",
+      "priority": 90,
+      "decision": "block",
+      "threshold": 0.15,
+      "prompts": [],
+      "tags": []
+    },
+    {
+      "id": 10,
+      "name": "obscene_gesture",
+      "display_name": "不雅手势",
+      "chain": "direct",
+      "priority": 95,
+      "decision": "block",
+      "threshold": 0.15,
+      "prompts": [],
+      "tags": []
+    }
+  ]
+}
