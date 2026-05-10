@@ -1,0 +1,139 @@
+Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to C:\Users\LENOVO/.cache\torch\hub\checkpoints\resnet18-f37072fd.pth
+epoch 001/20 train_loss=16.204297 lr=0.00029815
+epoch 002/20 train_loss=9.561364 lr=0.00029266
+epoch 003/20 train_loss=5.273848 lr=0.00028365
+epoch 004/20 train_loss=3.223325 lr=0.00027135
+epoch 005/20 train_loss=2.051581 lr=0.00025607
+epoch 006/20 train_loss=1.309708 lr=0.00023817
+epoch 007/20 train_loss=0.985658 lr=0.00021810
+epoch 008/20 train_loss=0.723925 lr=0.00019635
+epoch 009/20 train_loss=0.561186 lr=0.00017347
+epoch 010/20 train_loss=0.424842 lr=0.00015000
+epoch 011/20 train_loss=0.341055 lr=0.00012653
+epoch 012/20 train_loss=0.333459 lr=0.00010365
+epoch 013/20 train_loss=0.228322 lr=0.00008190
+epoch 014/20 train_loss=0.242071 lr=0.00006183
+epoch 015/20 train_loss=0.188584 lr=0.00004393
+epoch 016/20 train_loss=0.187766 lr=0.00002865
+epoch 017/20 train_loss=0.206462 lr=0.00001635
+epoch 018/20 train_loss=0.146131 lr=0.00000734
+epoch 019/20 train_loss=0.170607 lr=0.00000185
+epoch 020/20 train_loss=0.155750 lr=0.00000000
+{
+  "root": "E:\\yolov8_recog\\yolo-yoloworldBasicModel (1)\\yolo-yoloworldBasicModel\\yoloidentify",
+  "data": "E:\\yolov8_recog\\yolo-yoloworldBasicModel (1)\\yolo-yoloworldBasicModel\\yoloidentify\\data\\pubfig_retinaface_arcface",
+  "weights_dir": "E:\\yolov8_recog\\yolo-yoloworldBasicModel (1)\\yolo-yoloworldBasicModel\\yoloidentify\\weights",
+  "best_weight": "E:\\yolov8_recog\\yolo-yoloworldBasicModel (1)\\yolo-yoloworldBasicModel\\yoloidentify\\weights\\arcface_retinaface_best.pt",
+  "last_weight": "E:\\yolov8_recog\\yolo-yoloworldBasicModel (1)\\yolo-yoloworldBasicModel\\yoloidentify\\weights\\arcface_retinaface_last.pt",
+  "classes": 200,
+  "train_images": 9656,
+  "epochs": 20,
+  "batch": 64,
+  "embedding_dim": 256,
+  "device": "cuda:0",
+  "pretrained": true,
+  "best_train_loss": 0.14613076182994328,
+  "seconds": 594.2342524528503,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 16.20429665724305,
+      "lr": 0.00029815325108927063
+    },
+    {
+      "epoch": 2,
+      "train_loss": 9.561363529151594,
+      "lr": 0.00029265847744427303
+    },
+    {
+      "epoch": 3,
+      "train_loss": 5.2738483939767375,
+      "lr": 0.0002836509786282552
+    },
+    {
+      "epoch": 4,
+      "train_loss": 3.223325389223644,
+      "lr": 0.0002713525491562421
+    },
+    {
+      "epoch": 5,
+      "train_loss": 2.0515805017681483,
+      "lr": 0.0002560660171779821
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.309708010686165,
+      "lr": 0.000238167787843871
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.9856580588673399,
+      "lr": 0.00021809857496093204
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.723924552322718,
+      "lr": 0.00019635254915624216
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.5611860949080052,
+      "lr": 0.00017346516975603468
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.4248424832922867,
+      "lr": 0.00015000000000000001
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.34105475615191505,
+      "lr": 0.0001265348302439654
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.33345918944406433,
+      "lr": 0.0001036474508437579
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.2283219270618029,
+      "lr": 8.190142503906799e-05
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.2420710561767702,
+      "lr": 6.183221215612905e-05
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.18858352759289737,
+      "lr": 4.393398282201788e-05
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.18776600529781567,
+      "lr": 2.86474508437579e-05
+    },
+    {
+      "epoch": 17,
+      "train_loss": 0.20646233476278647,
+      "lr": 1.6349021371744834e-05
+    },
+    {
+      "epoch": 18,
+      "train_loss": 0.14613076182994328,
+      "lr": 7.341522555726972e-06
+    },
+    {
+      "epoch": 19,
+      "train_loss": 0.17060683945252914,
+      "lr": 1.8467489107293517e-06
+    },
+    {
+      "epoch": 20,
+      "train_loss": 0.15575046547670798,
+      "lr": 0.0
+    }
+  ]
+}

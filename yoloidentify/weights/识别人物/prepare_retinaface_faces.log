@@ -1,0 +1,51 @@
+train: 500/9,766 retinaface=481 fallback=14 no_face=0 error=5 (8.3/s)
+train: 1,000/9,766 retinaface=980 fallback=14 no_face=0 error=6 (7.9/s)
+train: 1,500/9,766 retinaface=1,468 fallback=16 no_face=0 error=16 (9.4/s)
+train: 2,000/9,766 retinaface=1,957 fallback=21 no_face=0 error=22 (11.8/s)
+train: 2,500/9,766 retinaface=2,450 fallback=26 no_face=0 error=24 (14.0/s)
+train: 3,000/9,766 retinaface=2,945 fallback=28 no_face=0 error=27 (15.9/s)
+train: 3,500/9,766 retinaface=3,427 fallback=35 no_face=0 error=38 (17.5/s)
+train: 4,000/9,766 retinaface=3,912 fallback=43 no_face=0 error=45 (19.0/s)
+train: 4,500/9,766 retinaface=4,398 fallback=50 no_face=0 error=52 (20.5/s)
+train: 5,000/9,766 retinaface=4,887 fallback=56 no_face=0 error=57 (21.5/s)
+train: 5,500/9,766 retinaface=5,370 fallback=68 no_face=0 error=62 (22.5/s)
+train: 6,000/9,766 retinaface=5,866 fallback=69 no_face=0 error=65 (23.7/s)
+train: 6,500/9,766 retinaface=6,356 fallback=74 no_face=0 error=70 (24.8/s)
+train: 7,000/9,766 retinaface=6,850 fallback=75 no_face=0 error=75 (25.6/s)
+train: 7,500/9,766 retinaface=7,337 fallback=80 no_face=0 error=83 (26.5/s)
+train: 8,000/9,766 retinaface=7,828 fallback=83 no_face=0 error=89 (27.4/s)
+train: 8,500/9,766 retinaface=8,314 fallback=89 no_face=0 error=97 (28.1/s)
+train: 9,000/9,766 retinaface=8,796 fallback=98 no_face=0 error=106 (28.5/s)
+train: 9,500/9,766 retinaface=9,286 fallback=105 no_face=0 error=109 (29.2/s)
+train: 9,766/9,766 retinaface=9,547 fallback=109 no_face=0 error=110 (29.5/s)
+test: 500/2,439 retinaface=480 fallback=11 no_face=0 error=9 (40.5/s)
+test: 1,000/2,439 retinaface=970 fallback=13 no_face=0 error=17 (42.3/s)
+test: 1,500/2,439 retinaface=1,459 fallback=19 no_face=0 error=22 (41.0/s)
+test: 2,000/2,439 retinaface=1,946 fallback=25 no_face=0 error=29 (41.9/s)
+test: 2,439/2,439 retinaface=2,373 fallback=29 no_face=0 error=37 (41.2/s)
+{
+  "root": "E:\\yolov8_recog\\yolo-yoloworldBasicModel (1)\\yolo-yoloworldBasicModel\\yoloidentify",
+  "pubfig_root": "E:\\yolov8_recog\\yolo-yoloworldBasicModel (1)\\yolo-yoloworldBasicModel\\yoloidentify\\data\\pubfig",
+  "out": "E:\\yolov8_recog\\yolo-yoloworldBasicModel (1)\\yolo-yoloworldBasicModel\\yoloidentify\\data\\pubfig_retinaface_arcface",
+  "score_threshold": 0.7,
+  "nms_threshold": 0.4,
+  "fallback_rect": true,
+  "splits": {
+    "train": {
+      "source_images": 9766,
+      "face_images": 9656,
+      "retinaface": 9547,
+      "fallback_rect": 109,
+      "no_face": 0,
+      "error": 110
+    },
+    "test": {
+      "source_images": 2439,
+      "face_images": 2402,
+      "retinaface": 2373,
+      "fallback_rect": 29,
+      "no_face": 0,
+      "error": 37
+    }
+  }
+}

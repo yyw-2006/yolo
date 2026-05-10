@@ -1,0 +1,16 @@
+{
+  "root": "E:\\yolov8_recog\\yolo-yoloworldBasicModel (1)\\yolo-yoloworldBasicModel\\yoloidentify",
+  "data": "E:\\yolov8_recog\\yolo-yoloworldBasicModel (1)\\yolo-yoloworldBasicModel\\yoloidentify\\data\\识别人物\\pubfig_retinaface_arcface",
+  "weights": "E:\\yolov8_recog\\yolo-yoloworldBasicModel (1)\\yolo-yoloworldBasicModel\\yoloidentify\\weights\\识别人物\\arcface_retinaface_best.pt",
+  "csv": "E:\\yolov8_recog\\yolo-yoloworldBasicModel (1)\\yolo-yoloworldBasicModel\\yoloidentify\\weights\\识别人物\\arcface_retinaface_per_class_metrics.csv",
+  "classes": 200,
+  "test_images": 2402,
+  "correct": 2098,
+  "unknown": 0,
+  "overall_accuracy": 0.8734388009991674,
+  "macro_precision": 0.87399406,
+  "macro_recall": 0.821201685,
+  "macro_f1": 0.8352182100000001,
+  "threshold": -1.0,
+  "device": "cpu"
+}
