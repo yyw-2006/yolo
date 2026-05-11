@@ -9,7 +9,7 @@ from tqdm import tqdm
 from recognize import Recognizer, load_name_list
 
 # Set matplotlib font to support Chinese
-plt.rcParams['font.sans-serif'] = ['SimHei', 'WenQuanYi Micro Hei', 'Microsoft YaHei']
+plt.rcParams['font.sans-serif'] = ['Noto Sans CJK SC', 'Noto Sans CJK JP', 'SimHei', 'WenQuanYi Micro Hei', 'Microsoft YaHei']
 plt.rcParams['axes.unicode_minus'] = False
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -155,14 +155,23 @@ def evaluate():
         
         # Plot Original Class Accuracy
         plt.figure(figsize=(14, 8))
-        sns.barplot(data=orig_acc, x="原始检测类", y="准确率", hue="业务场景", dodge=False, palette="Set2")
+        
+        # Create a combined label for x-axis to ensure unique bars
+        orig_acc["展示标签"] = orig_acc["业务场景"] + "\n" + orig_acc["原始检测类"]
+        
+        ax = sns.barplot(data=orig_acc, x="展示标签", y="准确率", hue="业务场景", dodge=False, palette="Set2")
         plt.title("原始检测类测试准确率 (图像级别)")
         plt.ylabel("准确率")
         plt.xlabel("原始检测类")
         plt.xticks(rotation=45)
         plt.ylim(0, 1.05)
-        for i, row in orig_acc.iterrows():
-            plt.text(i, row["准确率"] + 0.01, f"{row['准确率']:.2%}", ha='center', fontsize=9)
+        
+        # Add text labels on top of bars
+        for i, p in enumerate(ax.patches):
+            height = p.get_height()
+            if not pd.isna(height):
+                ax.text(p.get_x() + p.get_width()/2., height + 0.01, f"{height:.2%}", ha="center", fontsize=9)
+                
         plt.legend(title="业务场景", bbox_to_anchor=(1.05, 1), loc='upper left')
         plt.tight_layout()
         plt.savefig(OUTPUT_DIR / "original_class_accuracy.png", dpi=300)
