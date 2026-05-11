@@ -1,0 +1,213 @@
+<mxfile host="65bd71144e">
+    <diagram name="YOLO识别流程" id="yolo_flow_diagram">
+        <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                
+                <!-- 输入 -->
+                <mxCell id="node_input" value="输入图像" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="260" width="100" height="60" as="geometry"/>
+                </mxCell>
+                
+                <!-- YOLOv8 检测 -->
+                <mxCell id="node_yolo" value="YOLOv8 目标检测&#10;(19个类别)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="260" width="120" height="60" as="geometry"/>
+                </mxCell>
+                
+                <mxCell id="edge_input_yolo" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="node_input" target="node_yolo">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- 提取类别 -->
+                <mxCell id="node_extract" value="提取检测到的类别&#10;(categories)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="260" width="120" height="60" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge_yolo_extract" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="node_yolo" target="node_extract">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- 人脸分支 -->
+                <mxCell id="node_face_check" value="是否包含 face?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="100" width="120" height="80" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge_extract_face" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="node_extract" target="node_face_check">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="node_arcface" value="InsightFace&#10;(RetinaFace + ArcFace)&#10;人脸识别与比对" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="560" y="110" width="140" height="60" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge_face_yes" value="是" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="node_face_check" target="node_arcface">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="node_face_result" value="返回人名&#10;(或“普通人”)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="100" width="100" height="80" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge_arcface_result" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="node_arcface" target="node_face_result">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- 业务规则映射 -->
+                <mxCell id="node_rule_mapping" value="业务标签映射&#10;(Rule Layer)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="560" y="260" width="120" height="60" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge_extract_rule" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="node_extract" target="node_rule_mapping">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="edge_face_rule" value="身份信息" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="node_face_result" target="node_rule_mapping">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="810" y="220"/>
+                            <mxPoint x="620" y="220"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <!-- 映射规则分支 -->
+                <mxCell id="rule_pol" value="人名在政治人物名单中" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="260" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ret_pol" value="涉政" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="960" y="250" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_rule_pol" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="node_rule_mapping" target="rule_pol">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_ret_pol" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="rule_pol" target="ret_pol">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="rule_terr" value="包含 gun/knife/blood/police" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="320" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ret_terr" value="暴恐" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="960" y="310" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_rule_terr" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.75;" edge="1" parent="1" source="node_rule_mapping" target="rule_terr">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="720" y="305"/>
+                            <mxPoint x="720" y="340"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_ret_terr" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="rule_terr" target="ret_terr">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="rule_drug" value="包含 syringe/powder" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="380" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ret_drug" value="违禁毒品" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="960" y="370" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_rule_drug" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.75;" edge="1" parent="1" source="node_rule_mapping" target="rule_drug">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="700" y="305"/>
+                            <mxPoint x="700" y="400"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_ret_drug" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="rule_drug" target="ret_drug">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="rule_nazi" value="包含 swastika" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="440" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ret_nazi" value="纳粹符号" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="960" y="430" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_rule_nazi" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.75;" edge="1" parent="1" source="node_rule_mapping" target="rule_nazi">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="680" y="305"/>
+                            <mxPoint x="680" y="460"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_ret_nazi" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="rule_nazi" target="ret_nazi">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="rule_gamble" value="包含 poker_card/dice/chip/roulette/slot_machine" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="500" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ret_gamble" value="赌博" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="960" y="490" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_rule_gamble" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.75;exitY=1;" edge="1" parent="1" source="node_rule_mapping" target="rule_gamble">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="650" y="520"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_ret_gamble" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="rule_gamble" target="ret_gamble">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="rule_gesture" value="包含 middle_finger" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="560" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ret_gesture" value="不雅手势" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="960" y="550" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_rule_gesture" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;" edge="1" parent="1" source="node_rule_mapping" target="rule_gesture">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="620" y="580"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_ret_gesture" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="rule_gesture" target="ret_gesture">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="rule_crowd" value="包含 banner/flag 或 (crowd 且 face_count&gt;=1)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="620" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ret_crowd" value="游行集会" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="960" y="610" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_rule_crowd" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.25;exitY=1;" edge="1" parent="1" source="node_rule_mapping" target="rule_crowd">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="590" y="640"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_ret_crowd" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="rule_crowd" target="ret_crowd">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="rule_normal" value="以上均不满足" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="680" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ret_normal" value="正常" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="960" y="670" width="80" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_rule_normal" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.1;exitY=1;" edge="1" parent="1" source="node_rule_mapping" target="rule_normal">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="572" y="700"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e_ret_normal" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="rule_normal" target="ret_normal">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
